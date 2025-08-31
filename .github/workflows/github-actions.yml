@@ -13,9 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Docker Compose
-        run: |
-          docker compose version || sudo apt-get update && sudo apt-get install -y docker-compose
+      - uses: actions/checkout@v4.2.2
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker/docker-compose.yml"
 
       - name: Build and start services
         run: docker compose up -d --build
@@ -24,13 +27,13 @@ jobs:
         run: |
           for i in {1..10}; do
             if curl -s http://localhost:8080 > /dev/null; then
-              echo "✅ Nginx is up!"
+              echo "Nginx is up"
               exit 0
             fi
             echo "Nginx not ready yet... retrying"
             sleep 3
           done
-          echo "❌ Nginx did not respond in time"
+          echo "Nginx did not respond in time"
           docker compose logs
           exit 1
 
