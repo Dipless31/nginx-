@@ -1,0 +1,2 @@
+[31/Aug/2025:21:29:31 +0000] 200 - GET http localhost "/" [Client 172.20.0.1] [Length 568] [Gzip 1.86] "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" "-"
+[31/Aug/2025:21:29:31 +0000] 400 - GET http localhost "/favicon.ico" [Client 127.0.0.1] [Length 230] [Gzip -] "-" "-"
